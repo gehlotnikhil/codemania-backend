@@ -140,6 +140,7 @@ router.post("/playground/submit",(req,res)=>{
             return output;
         } catch (error) {
             output.result = "Compile Error..."
+            console.log("this is error---",error)
             return output
         }
     }

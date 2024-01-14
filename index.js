@@ -24,6 +24,7 @@ app.use(express.json())
 app.use("/api/auth/",require("./router/auth"))
 app.use("/api/question/",require("./router/question"))
 app.use("/api/check/",require("./router/check"))
+// app.use("/api/check/",require("./router/check2"))
 
 
 

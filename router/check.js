@@ -1,7 +1,7 @@
 const express = require("express")
 const router = express.Router()
 const { execSync } = require('child_process');
-const { spawn } = require('child_process');
+const { spawn } = require("child_process");
 const f = require("fs")
 router.post("/question/submit", (req, res) => {
 

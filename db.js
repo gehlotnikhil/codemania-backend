@@ -1,5 +1,5 @@
 const mongoose = require("mongoose")
-const mongodbUrl = "mongodb://127.0.0.1/codingPlatform"
+const mongodbUrl = "mongodb://localhost:27017/codingPlatform"
 
 const connect = ()=>{
     mongoose.connect(mongodbUrl)

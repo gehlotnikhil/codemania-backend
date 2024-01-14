@@ -1,10 +1,23 @@
+require("dotenv").config()
 const express = require("express")
-const connect =  require("./db")
+const connect =  require("./database/connect")
 var cors = require("cors")
-
-connect()
-
 const app = express()
+const PORT = process.env.PORT || 5000;
+
+const start = async()=>{
+    try{
+        await connect(process.env.MONGODB_URL);
+        app.listen(PORT, ()=>{
+            console.log("Server is running at port ",PORT)
+        })
+    }
+    catch(error){
+        console.log({err:error})
+    }
+}
+start();
+
 
 app.use(cors())
 app.use(express.json())
@@ -12,7 +25,5 @@ app.use("/api/auth/",require("./router/auth"))
 app.use("/api/question/",require("./router/question"))
 app.use("/api/check/",require("./router/check"))
 
-app.listen(5000,()=>{
-    console.log("Server is Running at Port 5000")
-})
+
 

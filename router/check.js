@@ -47,7 +47,7 @@ router.post("/question/submit", async (req, res) => {
                 language: 'java',
                 versionIndex: 3, // Java 8
                 clientId: '3cb6c6b56019717db130949865c7091f',
-                clientSecret: '485b1ad907533987967df3cf4921da0e3833a60cf9df04a6f6f173ab51c8569b',
+                clientSecret: '79caf22b6c76651bc39c941615728ab37f8f78acaf61204d35bef61358208626',
             };
             const jdoodleResponse = await axios.post(JDoodleEndpoint, jdoodlePayload);
 
@@ -148,7 +148,7 @@ router.post("/playground/submit", async(req, res) => {
                 language: 'java',
                 versionIndex: 3, // Java 8
                 clientId: '3cb6c6b56019717db130949865c7091f',
-                clientSecret: '485b1ad907533987967df3cf4921da0e3833a60cf9df04a6f6f173ab51c8569b',
+                clientSecret: '79caf22b6c76651bc39c941615728ab37f8f78acaf61204d35bef61358208626',
             };
             const jdoodleResponse = await axios.post(JDoodleEndpoint, jdoodlePayload);
 

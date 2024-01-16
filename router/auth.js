@@ -7,6 +7,43 @@ const jwt = require("jsonwebtoken")
 
 const JWT_Secret = "NikhilGehlot"
 
+
+router.post("/glogin", async (req, res) => {
+    let success = false
+    const { email } = req.body;
+    try {
+        const user = await User.findOne({ email: req.body.email })
+        // if email is unable to find
+        if (!user) {
+            return res.status(401).send({ success, error: "E-Please provide correct Credential" })
+        }
+        console.log("details: " + user)
+        const data = {
+            users: {
+                id: user.id
+            }
+        }
+        const authToken = await jwt.sign(data, JWT_Secret)
+
+        success = true
+        req.body.id = user.id
+        req.body.name = user.name
+        req.body.institude = user.institude
+        req.body.age = user.age
+        req.body.mobile = user.mobile || "Unknown"
+        req.body.address = user.address || "Unknown"
+        console.log("req body == ", req.body)
+
+        res.send({ success, authToken, body: req.body, username: user.username })
+
+    } catch (err) {
+        for (field in err.errors) {
+            console.log(err.errors[field])
+        }
+        return res.status(407).send({ success, err })
+    }
+})
+
 router.post("/login", [
     body("email", "Please Enter a Email in the Field").isEmail(),
     body("password", "Please Enter Your Password").exists()

@@ -17,10 +17,11 @@ const start = async()=>{
     }
 }
 start();
-
-
 app.use(cors())
 app.use(express.json())
+app.get("/",(req,res)=>{
+    res.send({success:true})
+})
 app.use("/api/auth/",require("./router/auth"))
 app.use("/api/question/",require("./router/question"))
 app.use("/api/check/",require("./router/check"))
